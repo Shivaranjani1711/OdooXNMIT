@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Listings</title>
+  <link rel="stylesheet" href="style copy.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <h1>ReOwn App</span></h1>
+    <div class="nav-icons">
+      <div class="cart-icon" onclick="window.location.href='cart.html'">🛒</div>
+      <div class="profile-icon">👤</div>
+    </div>
+  </header>
+
+  <!-- Add New + Search + Sort -->
+  <section class="listing-top">
+    <button class="add-btn" onclick="window.location.href='add-product.html'">+ Add New</button>
+    <!-- Inside product-card div -->
+<button class="add-to-cart-btn" onclick="addToCart('iPhone 12', 45000, 'https://www.pngmart.com/files/7/iPhone-12-PNG-Image.png')">Add to Cart</button>
+    <input type="text" placeholder="Search ..." class="search-input">
+    <div class="sort-buttons">
+      <button class="menu-btn-small">Sort</button>
+      <button class="menu-btn-small">Filter</button>
+      <button class="menu-btn-small">Group By</button>
+    </div>
+  </section>
+
+  <!-- Listings Container -->
+  <main class="listings-container">
+    <!-- Product Card 1 -->
+    <div class="product-card" onclick="goToPage('product.html')">
+      <img src="https://applestore.ng/wp-content/uploads/2024/02/iPhone-12-Camera-Specs.png" alt="iPhone 12">
+      <div class="product-info">
+        <p><strong>Name:</strong> iPhone 12</p>
+        <p><strong>Price:</strong> ₹45,000</p>
+        <p><strong>Category:</strong> Electronics</p>
+        <p><strong>Status:</strong> Available</p>
+        <p><strong>Seller:</strong> Ravi Kumar</p>
+      </div>
+    </div>
+
+    <!-- Product Card 2 -->
+    <div class="product-card" onclick="goToPage('product.html')">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.WMo75tiTl-2TYVplGMMmpAAAAA?pid=Api&P=0&h=180" alt="Dell Laptop">
+      <div class="product-info">
+        <p><strong>Name:</strong> Dell Laptop</p>
+        <p><strong>Price:</strong> ₹35,000</p>
+        <p><strong>Category:</strong> Electronics</p>
+        <p><strong>Status:</strong> Sold</p>
+        <p><strong>Seller:</strong> Ravi Kumar</p>
+      </div>
+    </div>
+
+    <!-- Product Card 3 -->
+    <div class="product-card" onclick="goToPage('product.html')">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.Hn0oFKCGiWbivS8Z_5cS3gHaGK?pid=Api&P=0&h=180" alt="Hero Cycle">
+      <div class="product-info">
+        <p><strong>Name:</strong> Hero Cycle</p>
+        <p><strong>Price:</strong> ₹5,000</p>
+        <p><strong>Category:</strong> Sports</p>
+        <p><strong>Status:</strong> Available</p>
+        <p><strong>Seller:</strong> Ravi Kumar</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

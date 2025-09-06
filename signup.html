@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - ReOwn</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">ReOwn</div>
+    <ul class="nav-links">
+      <li><a href="login.html" class="btn">Login</a></li>
+      <li><a href="signup.html" class="btn active">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  <!-- Signup Box -->
+ <section class="form-section">
+  <h2>Create Account</h2>
+  <form id="signupForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="tel" id="phone" placeholder="Phone Number" required>
+    <input type="password" id="password" placeholder="Create Password" required>
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+    <button type="submit">Sign Up</button>
+    <p>Already a member? <a href="login.html">Login here</a></p>
+  </form>
+  <script>
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const password = document.getElementById("password").value;
+
+    fetch("http://localhost:5000/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, password })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message); // show the server message
+        if (data.success) {
+            // ✅ Redirect to homepage if signup is successful
+            window.location.href = "home.html"; // replace with your homepage file name
+        }
+    })
+    .catch(err => console.error(err));
+});
+</script>
+</section>
+</body>
+</html>
+

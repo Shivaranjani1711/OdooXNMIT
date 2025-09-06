@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff0f5;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background: #f7cac9;
+      border-radius: 0 0 10px 10px;
+      align-items: center;
+    }
+    .cart-container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    .cart-item {
+      display: flex;
+      gap: 20px;
+      background: #f7cac9;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+    .cart-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .item-details p {
+      margin: 4px 0;
+      color: #6c3483;
+    }
+    .item-details input {
+      width: 60px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #d7a6c0;
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      color: #6c3483;
+      font-size: 18px;
+    }
+    .checkout-btn {
+      background: #6c3483;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .checkout-btn:hover {
+      background: #4b1e61;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <h1>ReOwn App</span></h1>
+    <div class="nav-icons">
+      <div class="cart-icon">🛒</div>
+      <div class="profile-icon">👤</div>
+    </div>
+  </header>
+
+  <div class="cart-container">
+    <h2>My Cart</h2>
+    <div id="cart-items"></div>
+    <button onclick="addToCart('Eco Kettle', 699, 'https://www.novaindia.co.in/cdn/shop/files/Screenshot2023-07-18at10.44.03AM.png?v=1689657278')">Add to Cart</button>
+
+    <div class="cart-total">
+      <p>Total: <span id="total-price">₹0</span></p>
+      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    const cartContainer = document.getElementById('cart-items');
+    const totalPriceElement = document.getElementById('total-price');
+
+    function loadCart(){
+      const cart = JSON.parse(localStorage.getItem('cart'))||[];
+      cartContainer.innerHTML='';
+      let total=0;
+
+      cart.forEach((item,index)=>{
+        const subtotal=item.price*item.quantity;
+        total+=subtotal;
+
+        const div=document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML=`
+          <img src="${item.img}" alt="${item.title}">
+          <div class="item-details">
+            <p><strong>${item.title}</strong></p>
+            <p>Price: ₹${item.price}</p>
+            <p>Quantity: <input type="number" min="1" value="${item.quantity}" data-index="${index}"></p>
+            <p>Subtotal: ₹${subtotal}</p>
+          </div>`;
+        cartContainer.appendChild(div);
+      });
+
+      totalPriceElement.textContent=`₹${total.toLocaleString()}`;
+
+      const qtyInputs = cartContainer.querySelectorAll('input[type="number"]');
+      qtyInputs.forEach(input=>{
+        input.addEventListener('change', e=>{
+          const idx=e.target.getAttribute('data-index');
+          cart[idx].quantity=parseInt(e.target.value);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          loadCart();
+        });
+      });
+    }
+
+    function checkout(){
+      alert('Proceeding to checkout!');
+      // Optional: clear cart after checkout
+      // localStorage.removeItem('cart');
+      // loadCart();
+    }
+
+    loadCart();
+  </script>
+
+</body>
+</html>

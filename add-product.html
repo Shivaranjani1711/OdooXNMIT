@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product</title>
+  <link rel="stylesheet" href="style copy.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <h1>ReOwn App</span></h1>
+    <div class="nav-icons">
+      <div class="cart-icon">🛒</div>
+      <div class="profile-icon">👤</div>
+    </div>
+  </header>
+
+  <!-- Add Product Container -->
+  <main class="add-product-container">
+    <!-- Left: Image Upload -->
+    <div class="image-upload">
+      <img id="previewImage" src="https://cdn-icons-png.flaticon.com/512/109/109602.png" alt="Add Product Image">
+      <input type="file" id="productImage" accept="image/*">
+      <p>Click above to choose an image</p>
+    </div>
+
+    <!-- Right: Product Form -->
+    <form id="productForm" class="product-form">
+      <label>Product Title</label>
+      <input type="text" placeholder="Enter product title" required>
+
+      <label>Product Category</label>
+      <input type="text" placeholder="Enter category" required>
+
+      <label>Product Description</label>
+      <textarea placeholder="Enter description" rows="3" required></textarea>
+
+      <label>Price (₹)</label>
+      <input type="number" placeholder="Enter price" required>
+
+      <label>Quantity</label>
+      <input type="number" placeholder="Enter quantity" required>
+
+      <label>Condition</label>
+      <input type="text" placeholder="New / Used / Like New" required>
+
+      <label>Year of Manufacture (if applicable)</label>
+      <input type="number" placeholder="YYYY">
+
+      <label>Brand</label>
+      <input type="text" placeholder="Enter brand">
+
+      <label>Model</label>
+      <input type="text" placeholder="Enter model">
+
+      <label>Dimensions (Length × Width × Height)</label>
+      <input type="text" placeholder="e.g. 20cm × 10cm × 5cm">
+
+      <label>Weight</label>
+      <input type="text" placeholder="e.g. 2kg">
+
+      <label>Material</label>
+      <input type="text" placeholder="Enter material">
+
+      <label>Color</label>
+      <input type="text" placeholder="Enter color">
+
+      <label>
+        <input type="checkbox"> Original Packaging
+      </label>
+
+      <label>
+        <input type="checkbox"> Manual/Instructions Included
+      </label>
+
+      <label>Working Condition Description</label>
+      <textarea placeholder="Describe working condition" rows="3"></textarea>
+
+      <button type="submit">Add Item</button>
+    </form>
+  </main>
+
+  <script>
+    // Image preview
+    const imageInput = document.getElementById('productImage');
+    const previewImage = document.getElementById('previewImage');
+    imageInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if(file){
+        const reader = new FileReader();
+        reader.onload = e => previewImage.src = e.target.result;
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Add product to cart
+    const form = document.getElementById('productForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const data = {
+        title: form.querySelector('input[placeholder="Enter product title"]').value,
+        category: form.querySelector('input[placeholder="Enter category"]').value,
+        description: form.querySelector('textarea[placeholder="Enter description"]').value,
+        price: parseInt(form.querySelector('input[placeholder="Enter price"]').value),
+        quantity: parseInt(form.querySelector('input[placeholder="Enter quantity"]').value),
+        condition: form.querySelector('input[placeholder="New / Used / Like New"]').value,
+        year: form.querySelector('input[placeholder="YYYY"]').value,
+        brand: form.querySelector('input[placeholder="Enter brand"]').value,
+        model: form.querySelector('input[placeholder="Enter model"]').value,
+        dimensions: form.querySelector('input[placeholder="e.g. 20cm × 10cm × 5cm"]').value,
+        weight: form.querySelector('input[placeholder="e.g. 2kg"]').value,
+        material: form.querySelector('input[placeholder="Enter material"]').value,
+        color: form.querySelector('input[placeholder="Enter color"]').value,
+        packaging: form.querySelector('input[type="checkbox"]:nth-of-type(1)').checked,
+        manual: form.querySelector('input[type="checkbox"]:nth-of-type(2)').checked,
+        working: form.querySelector('textarea[placeholder="Describe working condition"]').value,
+        img: previewImage.src
+      };
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(data);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert('Product added to cart!');
+      form.reset();
+      previewImage.src = 'https://cdn-icons-png.flaticon.com/512/109/109602.png';
+    });
+
+    // Go to cart page on 🛒 click
+    const cartIcon = document.querySelector('.cart-icon');
+    cartIcon.addEventListener('click', () => {
+      window.location.href = 'cart.html';
+    });
+  </script>
+
+</body>
+</html>

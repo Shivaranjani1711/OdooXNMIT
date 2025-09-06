@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>All Users</title></head>
+<body>
+<h2>Users</h2>
+<ul id="userList"></ul>
+
+<script>
+fetch("http://localhost:5000/api/users")
+  .then(res => res.json())
+  .then(data => {
+    const ul = document.getElementById("userList");
+    data.users.forEach(user => {
+      const li = document.createElement("li");
+      li.innerText = `${user.name} - ${user.email} - ${user.phone}`;
+      ul.appendChild(li);
+    });
+  });
+</script>
+</body>
+</html>

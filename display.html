@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Users</title>
+</head>
+<body>
+    <h2>Users</h2>
+    <table border="1" id="usersTable">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </table>
+
+    <script>
+        fetch("http://localhost:5000/api/users")
+        .then(res => res.json())
+        .then(data => {
+            if(data.success) {
+                const table = document.getElementById("usersTable");
+                data.users.forEach(user => {
+                    const row = table.insertRow();
+                    row.insertCell(0).innerText = user.id;
+                    row.insertCell(1).innerText = user.name;
+                    row.insertCell(2).innerText = user.email;
+                    row.insertCell(3).innerText = user.phone;
+                });
+            } else {
+                alert("Failed to fetch users");
+            }
+        })
+        .catch(err => console.error(err));
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>All Users</title></head>
+<body>
+<h2>Users</h2>
+<ul id="userList"></ul>
+
+<script>
+fetch("http://localhost:5000/api/users")
+  .then(res => res.json())
+  .then(data => {
+    const ul = document.getElementById("userList");
+    data.users.forEach(user => {
+      const li = document.createElement("li");
+      li.innerText = `${user.name} - ${user.email} - ${user.phone}`;
+      ul.appendChild(li);
+    });
+  });
+</script>
+</body>
+</html>
+

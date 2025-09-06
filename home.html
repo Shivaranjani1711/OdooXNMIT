@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoFinds</title>
+  <style>
+    :root {
+      --violet: #d8c4f3;
+      --pink: #f7d6e0;
+      --text: #333;
+      --accent: #a678b4;
+      --bg: #fefefe;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(to right, var(--violet), var(--pink));
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 10rem;
+      color: var(--accent);
+    }
+   .profile 
+   {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 3rem 0;
+    }
+
+    nav button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .page {
+      display: none;
+      padding: 2rem;
+    }
+
+    .active {
+      display: block;
+    }
+
+    h3 {
+      color: var(--accent);
+      margin-top: 1.8rem;
+      font-size: 1.8rem; /* Try 2rem or higher for more impact */
+      font-weight: 900;
+}
+
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 0.5fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--violet);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      margin: 1rem 0;
+      color: var(--accent);
+    }
+
+    .card button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 0.10rem;
+      margin: 0.5rem;
+      border-radius: 9px;
+      cursor: pointer;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .list li {
+      background: var(--pink);
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ReOwn</h1>
+    <nav>
+      <button onclick="showPage('home')">Home</button>
+      <button onclick="showPage('cart')">Cart</button>
+      <button onclick="showPage('wishlist')">Wishlist</button>
+      <div class="profile">
+  <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile" onclick="goToProfile()" />
+</div>
+
+<script>
+  function goToProfile() {
+    window.location.href = "index.html";
+  }
+</script>
+
+</header>
+
+    </nav>
+  </header>
+
+  <section id="home" class="page active">
+    <h2></h2>
+
+    <!-- Home Appliances -->
+    <h3>🏠 Home Appliances</h3>
+    <div class="product-grid">
+      <div class="card">
+        <img src="https://www.novaindia.co.in/cdn/shop/files/Screenshot2023-07-18at10.44.03AM.png?v=1689657278" alt="Eco Kettle" />
+        <h3>Eco Kettle</h3>
+        <p><strong>Price:</strong> ₹699</p>
+
+        <p>Made from recycled steel. Energy-efficient.</p>
+        <button onclick="addToCart('Eco Kettle')">Add to Cart</button>
+        <button onclick="addToWishlist('Eco Kettle')">Add to Wishlist</button>
+      </div>
+      <div class="card">
+        <img src="https://rukminim2.flixcart.com/image/704/844/xif0q/television/k/h/w/-original-imah3868qdatnqg8.jpeg?q=90&crop=false" alt="Smart Tv" />
+        <h3>smart-tv</h3>
+        <p><strong>Price:</strong> ₹15000</p>
+        <p>Stream, surf, and sync—your all-in-one entertainment hub with built-in apps and smart connectivity..</p>
+        <button onclick="addToCart('Smart tv')">Add to Cart</button>
+        <button onclick="addToWishlist('smart Tv')">Add to Wishlist</button>
+      </div>
+      <div class="card">
+        <img src="https://cdn.britannica.com/08/107508-004-7B9E06F7.jpg" alt="FAN" />
+        <h3>FAN</h3>
+        <p><strong>Price:</strong> ₹400</p>
+
+        <p>Low energy consumption. Made from recycled aluminum.</p>
+        <button onclick="addToCart('FAN')">Add to Cart</button>
+        <button onclick="addToWishlist('FAN')">Add to Wishlist</button>
+      </div>
+    </div>
+
+    <!-- Accessories -->
+    <h3>👜 Accessories</h3>
+    <div class="product-grid">
+      <div class="card">
+        <img src="https://assets.myntassets.com/w_412,q_30,dpr_3,fl_progressive,f_webp/assets/images/30099190/2024/9/19/a4c271ee-e034-4eac-83d7-8ffcf26bb2f61726710203542-Ludic-Unisex-Colourblocked-Comfort-Insole-Canvas-Sneakers-90-1.jpg" alt="shoes" />
+        <h3>shoes</h3>
+        <p><strong>Price:</strong> ₹200</p>
+
+        <p>Stylish, durable, and made from ocean plastics.</p>
+        <button onclick="addToCart('shoes')">Add to Cart</button>
+        <button onclick="addToWishlist('shoes')">Add to Wishlist</button>
+      </div>
+      <div class="card">
+        <img src="https://image.the-woggles.com/cache/catalog/products/woggles_new_image_9_12_2022/starry_night_polarized_clubmaster_sunglasses_base_400x400.jpg" alt="Sunglasses"/>
+        <p>UV protection with biodegradable frames.</p>
+        <p><strong>Price:</strong> ₹520</p>
+
+        <button onclick="addToCart('Sunglasses')">Add to Cart</button>
+        <button onclick="addToWishlist('Sunglasses')">Add to Wishlist</button>
+      </div>
+      <div class="card">
+        <img src="https://tiacreation.com/wp-content/uploads/2024/05/37-tan.png" alt="Cork Wallet" />
+        <h3>Cork Wallet</h3>
+        <p><strong>Price:</strong> ₹300</p>
+
+        <p>Stylish and sustainable. Made from natural cork.</p>
+        <button onclick="addToCart('Cork Wallet')">Add to Cart</button>
+        <button onclick="addToWishlist('Cork Wallet')">Add to Wishlist</button>
+      </div>
+    </div>
+
+    <!-- Books -->
+    <h3>📚 Books</h3>
+    <div class="product-grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" alt="Sustainable Living Book" />
+        <h3>Sustainable Living</h3>
+        <p><strong>Price:</strong> ₹250</p>
+        <p>Learn eco habits with this beautifully illustrated guide.</p>
+        <button onclick="addToCart('Sustainable Living')">Add to Cart</button>
+        <button onclick="addToWishlist('Sustainable Living')">Add to Wishlist</button>
+      </div>
+      <div class="card">
+        <img src="https://raibookshop.com/image/cache/catalog/1%20New/IMG_20210806_171359-02-1000x1000.jpeg" alt="UPSC BOOK" />
+        <h3>UPSC Book</h3>
+        <p><strong>Price:</strong> ₹920</p>
+
+        <p>Practical knowleadge of Civil service.</p>
+        <button onclick="addToCart('UPSC BOOK')">Add to Cart</button>
+        <button onclick="addToWishlist('UPSC BOOK')">Add to Wishlist</button>
+      </div>
+      <div class="card">
+        <img src="https://m.media-amazon.com/images/I/71+paaqZQlL._UF1000,1000_QL80_.jpg" alt="NEET BOOK" />
+        <h3>NEET BOOK</h3>
+        <p><strong>Price:</strong> ₹422</p>
+
+        <p>Fun and educational stories that teach sustainability.</p>
+        <button onclick="addToCart('NEET BOOK')">Add to Cart</button>
+        <button onclick="addToWishlist('NEET BOOK')">Add to Wishlist</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🛒 CART PAGE -->
+  <section id="cart" class="page">
+    <h2>Your Cart</h2>
+    <ul id="cartList" class="list"></ul>
+  </section>
+
+  <!-- 💖 WISHLIST PAGE -->
+  <section id="wishlist" class="page">
+    <h2>Your Wishlist</h2>
+    <ul id="wishlistList" class="list"></ul>
+    <script>
+function addToCart(title, price, img) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let existing = cart.find(item => item.title === title);
+  if(existing){
+    existing.quantity++;
+  } else {
+    cart.push({ title, price, img, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.location.href = "cart.html"; // ✅ go to cart page
+}
+function addToWishlist(title, price, img) {
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  if(!wishlist.find(item => item.title === title)){
+    wishlist.push({ title, price, img });
+  }
+
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  window.location.href = "wishlist.html"; // ✅ go to wishlist page
+}
+</script>
+  </section>
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const cartList = document.getElementById('cartList');
+    const wishlistList = document.getElementById('wishlistList');
+
+    function showPage(id) {
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function addToCart(item) {
+      const li = document.createElement('li');
+      li.textContent = item;
+      cartList.appendChild(li);
+      showPage('cart'); 
+    }
+
+    function addToWishlist(item) {
+      const li = document.createElement('li');
+      li.textContent = item;
+      wishlistList.appendChild(li);
+      showPage('wishlist'); 
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showPage('home');
+    });
+  </script>
+</body>
+

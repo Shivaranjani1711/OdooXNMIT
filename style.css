@@ -1,0 +1,203 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom, #d8b4f8, #f8c8dc); /* pastel violet to pastel pink */
+  color: #2c2c2c;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: bold;
+  color: #c084fc; /* pastel violet logo */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #4a148c;
+  font-size: 15px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active,
+.nav-links a.btn:hover {
+  background: #f8c8dc; /* pastel pink hover */
+  color: #4a148c;
+}
+
+.btn {
+  border: 1px solid #c084fc; /* pastel violet border */
+  color: #4a148c;
+}
+
+/* Container */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  margin: 50px auto;
+  width: 80%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(200, 148, 255, 0.3);
+}
+
+/* Login Box */
+.login-box {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.profile-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  color: #f8a1d1; /* pastel pink icon */
+}
+
+.login-box form {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-box input {
+  padding: 12px;
+  border: 1px solid #d8b4f8;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background: #faf5ff;
+  color: #4a148c;
+}
+
+.login-box input::placeholder {
+  color: #888;
+}
+
+.login-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f8c8dc, #d8b4f8); /* pastel pink to pastel violet */
+  color: #4a148c;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: linear-gradient(90deg, #ffd6e8, #e0c3fc);
+}
+
+.extra-links {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #666;
+}
+
+.extra-links a {
+  color: #c084fc;
+  text-decoration: none;
+}
+
+/* Welcome Box */
+.welcome-box {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.welcome-box h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #f8c8dc, #d8b4f8);
+  background-clip: text;            /* Standard property */
+  -webkit-background-clip: text;    /* For WebKit browsers */
+  -webkit-text-fill-color: transparent;
+}
+
+
+.welcome-box p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #4a148c;
+  max-width: 400px;
+}
+.form-section {
+  width: 350px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.form-section h2 {
+  margin-bottom: 20px;
+  color: #4a148c;
+}
+
+#signupForm {
+  display: flex;
+  flex-direction: column; /* 👈 makes inputs vertical */
+  gap: 15px; /* spacing between inputs */
+}
+
+#signupForm input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+#signupForm button {
+  padding: 12px;
+  background: linear-gradient(90deg, #f8c8dc, #d8b4f8);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #4a148c;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#signupForm button:hover {
+  background: linear-gradient(90deg, #ffd6e8, #e0c3fc);
+}
